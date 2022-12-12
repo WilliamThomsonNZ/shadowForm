@@ -19,7 +19,7 @@ export default function Home() {
     }
   }
   return (
-    <div className={"bg-background"}>
+    <div className={"bg-background overflow-x-hidden"}>
       <Head>
         <title>Shadow Labs</title>
         <meta name="description" content="Shadow Labs - Our Formula. Your Future." />

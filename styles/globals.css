@@ -195,4 +195,8 @@ a {
     left: 50%;
     transform: translateX(-50%);
   }
+  .gradientLineFooter {
+    width: 100vw;
+    margin-left: calc(((100vw - 1300px) / 2) * -1);
+  }
 }
