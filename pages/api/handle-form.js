@@ -49,23 +49,23 @@ const handler = nc()
             message: "api running"
         });
     }).post(async (req, res) => {
-        let captchaData;
-        try {
-            const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.SECRET_KEY}&response=${token}`,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                }
-            )
-            const json = await response.json();
-            captchaData = json;
-        } catch (err) {
-            res.json({
-                code: 400, message: err
-            })
-        }
+        // let captchaData;
+        // try {
+        //     const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.SECRET_KEY}&response=${token}`,
+        //         {
+        //             method: 'POST',
+        //             headers: {
+        //                 'Content-Type': 'application/json',
+        //             }
+        //         }
+        //     )
+        //     const json = await response.json();
+        //     captchaData = json;
+        // } catch (err) {
+        //     res.json({
+        //         code: 400, message: err
+        //     })
+        // }
         try {
             const receiptId = await createFormSubmission(req.body);
             res.json({

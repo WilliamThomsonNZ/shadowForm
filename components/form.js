@@ -31,8 +31,8 @@ const Form = () => {
             setEmailError(false);
         }
         setLoading(true);
-        const token = captchaRef.current.getValue();
-        captchaRef.current.reset();
+        // const token = captchaRef.current.getValue();
+        // captchaRef.current.reset();
         try {
             const response = await fetch("/api/handle-form", {
                 method: 'POST',
@@ -104,7 +104,7 @@ const Form = () => {
                 <div className={"w-full flex justify-between items-center mt-[30px]"}>
                     <span className={"text-[16px] bodyText text-accent-1 lg:text-[21px] lg:tracking-[1.2px]"}>{showRequiredError ? "Please fill out all fields!" : emailError ? "Please enter a valid email address!" : showSuccess ? "Successfully submitted form!" : ""}</span>
                     <div>
-                        <ReCAPTCHA sitekey={"6Lc2fHEjAAAAAARf9trmLdWOCySGvFwEaFN5_8w5"} ref={captchaRef} theme={"dark"} />
+                        {/* <ReCAPTCHA sitekey={"6Lc2fHEjAAAAAARf9trmLdWOCySGvFwEaFN5_8w5"} ref={captchaRef} theme={"dark"} /> */}
                         <button className={"bg-accent-1 border-[1px] border-accent-1 bodyText tracking-[1.2px] py-3 px-7 rounded-[15px] shadow-[0px_0px_36px_#00D15278] whitespace-nowrap font-medium lg:px-10 lg:py-4 lg:text-[21px] lg:rounded-[20px]"} onClick={handleFormSubmission}>{loading ?
                             (<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>) :
                             "Send info"}</button>
