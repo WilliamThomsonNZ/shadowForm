@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from "next/image";
 const Header = () => {
+    const [pageSize, setPageSize] = useState(0)
     useEffect(() => {
         let box = document.querySelector(".box");
         let boxBoundingRect = box.getBoundingClientRect();
@@ -8,13 +9,12 @@ const Header = () => {
             x: boxBoundingRect.left + boxBoundingRect.width / 2,
             y: boxBoundingRect.top + boxBoundingRect.height / 2
         };
-
         document.addEventListener("mousemove", e => {
             let angle = Math.atan2(e.pageX - boxCenter.x, - (e.pageY - boxCenter.y)) * (180 / Math.PI);
             box.style.transform = `rotate(${angle + 65}deg)`;
         })
+    }, [])
 
-    })
 
     return (
         <header className={"pt-[80px] md:pt-[100px] lg:pt-[136px] px-[26px] md:mx-[26px] xl:mx-auto lg:max-w-[1300px] "}>

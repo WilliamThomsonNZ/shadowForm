@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 
-const Dropdown = () => {
+const Dropdown = ({ setSelectedRoles, selectedRoles }) => {
     const options = ["Developer", "Artist", "Founder", "Alpha Caller", "Project Manager", "Brand Manager"];
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [selectedRoles, setSelectedRoles] = useState([]);
 
     function handleOptionClick(e, value) {
         e.preventDefault();
