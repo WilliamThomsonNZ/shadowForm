@@ -13,7 +13,8 @@ export default function Home() {
     animate: {
       opacity: 1,
       transition: {
-        duration: 0.8,
+        delay: 0.4,
+        duration: 1.4,
       }
     }
   }
@@ -22,7 +23,7 @@ export default function Home() {
       <Head>
         <title>Shadow Labs</title>
         <meta name="description" content="Shadow Labs - Our Formula. Your Future." />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/imgs/favicon.png" />
       </Head>
       <motion.main variants={pageVars} initial={"initial"} animate={"animate"}>
         <Header />

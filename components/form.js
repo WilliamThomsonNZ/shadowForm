@@ -13,8 +13,19 @@ const Form = () => {
     const [answer3, setAnswer3] = useState("");
     const [loading, setLoading] = useState("");
     const [selectedRoles, setSelectedRoles] = useState([]);
+    const [showRequiredError, setShowRequiredError] = useState(false);
+    const [emailError, setEmailError] = useState(false);
     async function handleFormSubmission(e) {
         e.preventDefault();
+        const fieldsPassed = checkFields();
+        if (!fieldsPassed) return;
+        if (!checkEmailValidation(email)) {
+            setEmailError(true)
+
+            return
+        } else {
+            setEmailError(false);
+        }
         setLoading(true);
         try {
             const response = await fetch("/api/handle-form", {
@@ -42,6 +53,25 @@ const Form = () => {
         }
     }
 
+    function checkFields() {
+        if (!email || !discord || !twitter || !budget || !selectedRoles || !answer1 || !answer2 || !answer3) {
+            setShowRequiredError(true)
+            return false
+        } else {
+            setShowRequiredError(false)
+            return true;
+
+        }
+    }
+
+    function checkEmailValidation(email) {
+        const regex = /(.+)@(.+){2,}\.(.+){2,}/;
+        const isValid = regex.test(email);
+        return isValid;
+    }
+
+
+
     return (
         <form className={"backgroundGradient px-[26px] pt-[20px] pb-[40px] mt-[60px] rounded-[15px]  md:mx-[26px] xl:mx-auto lg:max-w-[1300px] lg:mt-[100px] lg:pt-[80px] lg:rounded-[50px] lg:pb-[80px]"}>
             <div className={"max-w-[650px] mx-auto"}>
@@ -61,10 +91,12 @@ const Form = () => {
                 <TextArea value={answer1} quesiton={"Great question number 1"} cb={(e) => setAnswer1(e.target.value)} />
                 <TextArea value={answer2} quesiton={"Great question number 2"} cb={(e) => setAnswer2(e.target.value)} />
                 <TextArea value={answer3} quesiton={"Great question number 3"} cb={(e) => setAnswer3(e.target.value)} />
-                <div className={"w-full flex justify-end mt-[30px]"}>
+                <div className={"w-full flex justify-between items-center mt-[30px]"}>
+                    <span className={"text-[16px] bodyText text-accent-1 lg:text-[21px] lg:tracking-[1.2px]"}>{showRequiredError ? "Please fill out all fields!" : emailError ? "Please enter a valid email address!" : ""}</span>
                     <button className={"bg-accent-1 border-[1px] border-accent-1 bodyText tracking-[1.2px] py-3 px-7 rounded-[15px] shadow-[0px_0px_36px_#00D15278] whitespace-nowrap font-medium lg:px-10 lg:py-4 lg:text-[21px] lg:rounded-[20px]"} onClick={handleFormSubmission}>{loading ?
                         (<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>) :
                         "Send info"}</button>
+
                 </div>
             </div>
         </form>
