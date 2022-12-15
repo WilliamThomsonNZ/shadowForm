@@ -28,8 +28,8 @@ export default {
             of: [{ type: 'string' }],
         },
         {
-            name: 'budget',
-            title: 'Project Budget',
+            name: 'ethAddress',
+            title: 'Ethereum Address',
             type: 'string',
         },
         {

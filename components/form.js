@@ -8,16 +8,16 @@ const Form = () => {
     const [email, setEmail] = useState("");
     const [discord, setDiscord] = useState("");
     const [twitter, setTwitter] = useState("");
-    const [budget, setBudget] = useState("")
+    const [ethAddress, setEthAddress] = useState("")
     const [answer1, setAnswer1] = useState("");
     const [answer2, setAnswer2] = useState("");
     const [answer3, setAnswer3] = useState("");
     const [loading, setLoading] = useState("");
+    const [currentTextAreaOpen, setCurrentTextAreaOpen] = useState(0);
     const [selectedRoles, setSelectedRoles] = useState([]);
     const [showRequiredError, setShowRequiredError] = useState(false);
     const [emailError, setEmailError] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false)
-    const captchaRef = useRef(null)
 
     async function handleFormSubmission(e) {
         e.preventDefault();
@@ -43,11 +43,11 @@ const Form = () => {
                     email,
                     discord,
                     twitter,
-                    budget,
+                    ethAddress,
                     selectedRoles,
                     answer1,
                     answer2,
-                    answer3, token
+                    answer3,
                 })
             })
             const data = await response.json();
@@ -64,7 +64,7 @@ const Form = () => {
     }
 
     function checkFields() {
-        if (!email || !discord || !twitter || !budget || !selectedRoles || !answer1 || !answer2 || !answer3) {
+        if (!email || !discord || !twitter || !ethAddress || !selectedRoles || !answer1 || !answer2 || !answer3) {
             setShowRequiredError(true)
             return false
         } else {
@@ -93,14 +93,14 @@ const Form = () => {
                 <TextInput name={"email"} label={"Email"} value={email} placeholder={"JohnDoe@gmail.com"} cb={(e) => setEmail(e.target.value)} />
                 <div className={"lg:flex justify-between lg:gap-x-[25px]"}>
                     <TextInput name={"discord"} label={"Discord"} value={discord} placeholder={"JohnDoe #8940"} cb={(e) => setDiscord(e.target.value)} />
-                    <TextInput name={"email"} label={"Twiiter Handle"} value={twitter} placeholder={"@JohnDoe"} cb={(e) => setTwitter(e.target.value)} />
+                    <TextInput name={"email"} label={"Twitter Handle"} value={twitter} placeholder={"@JohnDoe"} cb={(e) => setTwitter(e.target.value)} />
                 </div>
                 <Dropdown selectedRoles={selectedRoles} setSelectedRoles={(val) => setSelectedRoles(val)} />
-                <TextInput name={"budget"} label={"Project Budget"} value={budget} placeholder={"Amount in Dollars or Ethereum"} cb={(e) => setBudget(e.target.value)} />
+                <TextInput name={"ethAddress"} label={"Ethereum Address"} value={ethAddress} placeholder={"0x0000000000000000"} cb={(e) => setEthAddress(e.target.value)} />
                 <div className={"gradientLine mb-[25px] lg:mb-[30px]"}></div>
-                <TextArea value={answer1} quesiton={"Great question number 1"} cb={(e) => setAnswer1(e.target.value)} />
-                <TextArea value={answer2} quesiton={"Great question number 2"} cb={(e) => setAnswer2(e.target.value)} />
-                <TextArea value={answer3} quesiton={"Great question number 3"} cb={(e) => setAnswer3(e.target.value)} />
+                <TextArea value={answer1} quesiton={"Great question number 1"} cb={(e) => setAnswer1(e.target.value)} currentTextAreaOpen={currentTextAreaOpen} setCurrent={(val) => setCurrentTextAreaOpen(val)} index={1} />
+                <TextArea value={answer2} quesiton={"Great question number 2"} cb={(e) => setAnswer2(e.target.value)} currentTextAreaOpen={currentTextAreaOpen} setCurrent={(val) => setCurrentTextAreaOpen(val)} index={2} />
+                <TextArea value={answer3} quesiton={"Great question number 3"} cb={(e) => setAnswer3(e.target.value)} currentTextAreaOpen={currentTextAreaOpen} setCurrent={(val) => setCurrentTextAreaOpen(val)} index={3} />
                 <div className={"w-full flex justify-between items-center mt-[30px]"}>
                     <span className={"text-[16px] bodyText text-accent-1 lg:text-[21px] lg:tracking-[1.2px]"}>{showRequiredError ? "Please fill out all fields!" : emailError ? "Please enter a valid email address!" : showSuccess ? "Successfully submitted form!" : ""}</span>
                     <div>

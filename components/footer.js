@@ -29,7 +29,7 @@ const Footer = () => {
                             <Image src={"/imgs/light.png"} width={120} height={153} />
                         </div>
                     </div>
-                    <h6 className={"headingText text-[70px] tracking-[1.7px] flex gap-[7px] mb-[30px] lg:hidden"}>
+                    <h6 className={"headingText text-[20vw] tracking-[1.7px] flex gap-[7px] mb-[30px] lg:hidden"}>
                         <span className={"gradientTextGrey"}>
                             SHADOW
                         </span>
