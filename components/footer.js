@@ -10,12 +10,16 @@ const Footer = () => {
                 <div className={"md:mx-[26px] xl:mx-auto lg:max-w-[1300px]"}>
                     <div className={"flex w-full justify-between items-center lg:pb-[72px]"}>
                         <div className={"lg:flex flex-row-reverse items-center gap-x-[72px]"}>
-                            <div className={"flex flex-col lg:gap-y-6"}>
-                                <span className={"text-[15px] text-white block mb-2.5 font-bold  bodyText lg:text-[18px] lg:leading-none lg:mb-0"}>
-                                    Social
-                                </span>
-                                <a href={"https://twitter.com/ShadowLabsNFT"} target="_blank" rel="noreferrer" className={"text-[19px] text-accent-1"}><FontAwesomeIcon icon={faTwitter} className={"h-[19px] lg:h-6"} /></a>
+                            <div className={"lg:flex items-end gap-x-6"}>
+                                <div className={"flex flex-col lg:gap-y-6"}>
+                                    <span className={"text-[15px] text-white block mb-2.5 font-bold  bodyText lg:text-[18px] lg:leading-none lg:mb-0"}>
+                                        Social
+                                    </span>
+                                    <a href={"https://twitter.com/ShadowLabsNFT"} target="_blank" rel="noreferrer" className={"text-[19px] text-accent-1"}><FontAwesomeIcon icon={faTwitter} className={"h-[19px] lg:h-6"} /></a>
+                                </div>
+                                <a href="mailto:Info@shadow-labs.xyz" className={"text-[15px] text-white block mt-4 font-bold  bodyText lg:text-[18px] lg:leading-none lg:m-0"}>Info@shadow-labs.xyz</a>
                             </div>
+
                             <h6 className={"hidden headingText text-[105px] tracking-[1.9px]  gap-[7px] lg:block lg:leading-none"}>
                                 <span className={"gradientTextGrey"}>
                                     SHADOW
